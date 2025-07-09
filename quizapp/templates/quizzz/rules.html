@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} QuizCraft | Rules {% endblock title %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="jumbotron">
+  <h2 class="text-center mb-3">
+  <span class="text-gradient">Quiz Rules</span> 📝
+</h2>
+    <ul class="lead" style="list-style:decimal;">
+      <li>All questions are multiple choice.</li>
+      <li><span class="text-danger">Only one option is correct.</span></li>
+      <li>Each question carries <span class="text-danger">5 marks</span>.</li>
+      <li>No going back - every question shows only once.</li>
+      <li>Refreshing = you lose your current question.</li>
+      <li>Questions are randomized.</li>
+    </ul>
+    <div class="text-center mt-4">
+      <a href="{% url 'quiz:play' %}" class="btn btn-glow btn-lg">Start Now ▶️</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

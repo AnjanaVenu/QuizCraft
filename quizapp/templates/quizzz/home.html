@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} QuizCraft | Home {% endblock title %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="section-jumbotron" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center mb-3">
+  <div class="container text-center">
+  <h1 class="display-3 fw-bold text-primary">
+  Welcome to <span class="text-gradient">QuizCraft</span>🧠
+  </h1>
+    <p class="lead mt-3">Think you’ve got what it takes? Let’s test those brain cells!</p>
+
+    {% if not request.user.is_active %}
+      <p class="mb-3">Join my quiz tribe and unlock awesome challenges in tech, logic, and more!</p>
+      <a href="{% url 'quiz:register' %}" class="btn btn-glow btn-lg"><i class="fa fa-user-plus"></i> Join Now</a>
+    {% else %}
+      <a href="{% url 'quiz:play' %}" class="btn btn-glow btn-lg mx-1">Start Quiz 🚀</a>
+      <a href="{% url 'quiz:leaderboard' %}" class="btn btn-outline-primary btn-lg mx-1">Top Scores 🏆</a>
+    {% endif %}
+  </div>  
+</section>
+
+<!-- Why QuizCraft Section -->
+<section class="py-4 bg-white text-center fade-in">
+  <div class="container">
+    <h2 class="mb-3 fw-semibold" style="color: #6366f1;">Why QuizCraft?</h2>
+    <p class="lead mb-4">More than just quizzes — it's a fun, friendly battlefield for your mind!</p>
+
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5>🎯 Challenge Yourself</h5>
+        <p>Play quizzes that actually make you think — no boring stuff here!</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5>🚀 Level Up</h5>
+        <p>Each quiz helps you grow in confidence, speed, and smart thinking.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5>🏆 Compete & Win</h5>
+        <p>Climb the leaderboard and earn bragging rights among your friends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

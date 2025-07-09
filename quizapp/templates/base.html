@@ -1,0 +1,119 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}QuizCraft{% endblock title %}</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f3f4f6, #e0e7ff);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+    }
+
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: white !important;
+    }
+
+    .nav-link, .navbar-text {
+      color: white !important;
+      font-weight: 500;
+    }
+
+    .btn-glow {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 15px #60a5fa;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #f1f5f9;
+      font-size: 0.9rem;
+    }
+
+    footer ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    footer ul li {
+      display: inline-block;
+      margin: 0 10px;
+      color: #6b7280;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .text-gradient {
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'quiz:home' %}">QuizCraft</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbar">
+        {% if not request.user.is_active %}
+          <a href="{% url 'quiz:leaderboard' %}" class="btn btn-glow mx-2">Top Scores</a>
+          <a href="{% url 'quiz:login' %}" class="btn btn-glow">Log In 🔐</a>
+        {% else %}
+          <span class="navbar-text mx-2">Hey {{ request.user.username }}! Ready to win? 💡</span>
+          <a href="{% url 'quiz:logout' %}" class="btn btn-danger">Log Out ❌</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4 fade-in">
+    {% block content %}
+    {% endblock content %}
+  </main>
+
+  <footer class="py-4 mt-auto text-center">
+    <ul>
+      <li>Crafted with ❤️ by Anjana</li>
+    </ul>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

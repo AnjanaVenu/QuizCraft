@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if question is None %}
+
+<div class="container py-5 fade-in">
+  <div class="card shadow-sm border-0 p-4 text-center">
+    <h2 class="mb-3">
+  <span class="text-gradient">Woohoo! You’ve completed the quiz</span> 🏁
+  </h2>
+    <p class="lead">You've gone through all the available questions.</p>
+    <div class="text-center mt-4">
+      <a href="{% url 'quiz:leaderboard' %}" class="btn btn-glow" style="width: 200px;">
+        View Leaderboard <i class="fa fa-trophy ms-2" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="container py-5 fade-in">
+  <div class="card shadow-lg border-0 p-4">
+    
+    <h4 class="text-gradient mb-4">{{ question.html|safe }}</h4>
+
+    <form method="post" class="mb-3">
+      {% csrf_token %}
+      <input type="hidden" name="question_pk" value="{{ question.pk }}">
+
+      {% for choice in question.choices.all %}
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="choice_pk" id="choice-{{ forloop.counter }}" value="{{ choice.pk }}">
+          <label class="form-check-label" for="choice-{{ forloop.counter }}">
+            {{ choice.html|safe }}
+          </label>
+        </div>
+      {% endfor %}
+
+      <div class="text-center mt-4">
+        <input class="btn btn-glow btn-lg" type="submit" value="Submit Answer">
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endif %}
+{% endblock content %}

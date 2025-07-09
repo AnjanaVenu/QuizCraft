@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} QuizCraft | Welcome {% endblock title %}
+
+{% block content %}
+<section class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center fade-in">
+  <div class="container text-center">
+    <h1 class="display-5 mb-3">
+  <span class="text-gradient">You're already logged in</span> 🎉
+</h1>
+
+    <p class="lead">Head over to your dashboard and show your skills!</p>
+    <a href="{% url 'quiz:rules' %}" class="btn btn-glow btn-lg mx-2">Start Quiz 🚀</a>
+    <a href="{% url 'quiz:leaderboard' %}" class="btn btn-outline-primary btn-lg mx-2">Leaderboard 🏆</a>
+  </div>
+</section>
+{% endblock content %}

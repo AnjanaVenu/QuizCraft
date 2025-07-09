@@ -1,0 +1,32 @@
+# Python cache and virtual environment
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Environment variables
+.env
+
+# Django migration and database files
+db.sqlite3
+*.sqlite3
+
+# VS Code config
+.vscode/
+
+# Compiled files
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Static/media (optional, only if dynamically generated)
+staticfiles/
+media/
+
+# Node or frontend stuff (if used)
+node_modules/
+
+# Git
+.git/

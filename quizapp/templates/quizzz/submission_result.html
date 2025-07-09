@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} QuizCraft | Answer Review {% endblock title %}
+
+{% block content %}
+<div class="container py-5 fade-in">
+  <div class="card shadow-lg border-0 p-4">
+    
+    <h4 class="text-gradient mb-4">{{ attempted_question.question.html|safe }}</h4>
+
+    <p class="mb-3">
+      <strong>Your selected option:</strong><br>
+      {{ attempted_question.selected_choice.html|safe }}
+    </p>
+
+    {% if attempted_question.selected_choice.is_correct %}
+      <h5 class="text-success fw-semibold">✅ Well done! You got it right! 🎯</h5>
+    {% else %}
+      <h5 class="text-danger fw-semibold">🚫 That wasn't the right one — but don’t give up!</h5>
+    {% endif %}
+
+    <div class="mt-4">
+      <a href="{% url 'quiz:play' %}" class="btn btn-glow">Next Question ➡️</a>
+    </div>
+    
+  </div>
+</div>
+{% endblock content %}
